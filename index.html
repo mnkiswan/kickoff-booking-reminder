@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kickoff Booking Reminder · Zoho workflow case study</title>
+<meta name="description" content="When a kickoff form is submitted, the flow waits, looks up the contact, and sends the right reminder email for that case.">
+<style>
+:root{--bg:#0f1414;--card:#171e1e;--line:#26302f;--text:#eef2f1;--muted:#9aa8a6;--accent:#8ea7ff;--ok:#7fd1a6;--warn:#e8b27a;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--bg:#f6f8f7;--card:#ffffff;--line:#dbe2e0;--text:#14201e;--muted:#5b6b69;--accent:#3a57d6;--ok:#197a4f;--warn:#9a5b14}}
+:root[data-theme="light"]{--bg:#f6f8f7;--card:#ffffff;--line:#dbe2e0;--text:#14201e;--muted:#5b6b69;--accent:#3a57d6;--ok:#197a4f;--warn:#9a5b14}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:48px 20px 72px}
+.eyebrow{font:12px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:clamp(34px,6vw,58px);line-height:1.05;margin:14px 0 18px;letter-spacing:-.02em}
+h2{font-size:clamp(24px,3.4vw,32px);margin:0 0 14px;letter-spacing:-.01em}
+p{margin:0 0 14px}
+.lead{font-size:19px;color:var(--muted);max-width:640px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}
+.chip{font:13px var(--mono);border:1px solid var(--line);border-radius:999px;padding:5px 12px;color:var(--muted)}
+a{color:var(--accent)}
+.btn{display:inline-block;margin-top:6px;border:1px solid var(--accent);border-radius:8px;padding:9px 16px;text-decoration:none;font-weight:600}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:36px;align-items:center;margin-bottom:56px}
+@media (max-width:820px){.hero{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stat .n{font-size:30px;font-weight:700}
+.stat .l{font:12px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+section{margin-top:56px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:720px){.grid2{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr 1fr}}
+.steps{display:grid;gap:12px;counter-reset:s}
+.step{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+.step .badge{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;font:600 15px var(--mono);background:var(--card);border:1px solid var(--line);color:var(--accent)}
+.step h3{margin:2px 0 4px;font-size:17px}
+.step p{margin:0;color:var(--muted);font-size:15px}
+.branch{margin-top:12px;border-left:3px solid var(--warn);padding:10px 14px;background:var(--card);border-radius:0 10px 10px 0;font-size:15px;color:var(--muted)}
+.label{font:12px var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.ok{color:var(--ok)}.warn{color:var(--warn)}
+ul.plain{list-style:none;padding:0;margin:0}
+ul.plain li{padding:8px 0;border-bottom:1px solid var(--line);color:var(--muted)}
+ul.plain li:last-child{border-bottom:0}
+footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+.proj{display:block;text-decoration:none;color:inherit;transition:border-color .15s}
+.proj:hover{border-color:var(--accent)}
+.proj h3{margin:8px 0 6px;font-size:20px}
+.proj p{color:var(--muted);margin:0 0 12px;font-size:15px}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+<div class="eyebrow">Portfolio &middot; Zoho workflow automation</div>
+<header class="hero">
+  <div>
+    <h1>Kickoff Booking Reminder</h1>
+    <p class="lead">When a kickoff form is submitted, the flow waits, looks up the contact, and sends the right reminder email for that case.</p>
+    <div class="chips"><span class="chip">Zoho Forms</span><span class="chip">Zoho CRM</span><span class="chip">Zoho Flow delay</span><span class="chip">Email template</span></div>
+    <a class="btn" href="https://github.com/mnkiswan/kickoff-booking-reminder">View the repository on GitHub &rarr;</a>
+  </div>
+  <div class="card">
+    <div class="label">Flow activity</div>
+    <div class="stats"><div class="stat"><div class="n">1</div><div class="l">Delay</div></div><div class="stat"><div class="n">1</div><div class="l">Decision</div></div><div class="stat"><div class="n">1</div><div class="l">Email</div></div></div>
+    <p style="margin:14px 0 0;font-size:14px;color:var(--muted)">Shows the structure of the flow. Run counts were not captured for this one.</p>
+  </div>
+</header>
+
+<section>
+  <div class="eyebrow">The problem</div>
+  <h2>Clients forgot their kickoff</h2>
+  <p class="lead">Without a reminder, clients missed or forgot kickoff calls, which pushed onboarding back.</p>
+</section>
+
+<section>
+  <div class="eyebrow">How it works</div>
+  <h2>From trigger to finished work</h2>
+  <p class="lead" style="margin-bottom:24px">Trigger: a kickoff form entry is submitted.</p>
+  <div class="steps">
+<div class="step"><div class="badge">01</div><div><h3>Form submitted</h3><p>A client submits the kickoff form.</p></div></div>
+<div class="step"><div class="badge">02</div><div><h3>Wait</h3><p>A delay step holds the flow before the next action.</p></div></div>
+<div class="step"><div class="badge">03</div><div><h3>Look up the contact</h3><p>The contact is fetched from Zoho CRM.</p></div></div>
+<div class="step"><div class="badge">04</div><div><h3>Decide which reminder to send</h3><p>A decision step checks the record. If no condition matches, the Default branch runs.</p></div></div>
+<div class="step"><div class="badge">05</div><div><h3>Send the email template</h3><p>The matched branch sends the reminder email.</p></div></div>
+</div>
+  
+</section>
+
+<section>
+  <div class="eyebrow">Why it matters for the business</div>
+  <h2>What changes when this runs</h2>
+  <div class="grid2">
+    <div class="card"><h3 style="margin-top:0;font-size:18px">Fewer missed kickoffs</h3><p style="color:var(--muted);margin:0;font-size:15px">Clients get a reminder without anyone remembering to send one.</p></div><div class="card"><h3 style="margin-top:0;font-size:18px">Right message for each case</h3><p style="color:var(--muted);margin:0;font-size:15px">The decision step lets the reminder match the situation.</p></div><div class="card"><h3 style="margin-top:0;font-size:18px">Less follow-up work</h3><p style="color:var(--muted);margin:0;font-size:15px">Staff do not chase clients for confirmations.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Built with</div>
+  <div class="grid2">
+    <div class="card"><div class="label">Zoho apps</div><ul class="plain"><li>Zoho Forms</li><li>Zoho CRM</li><li>Zoho Flow delay</li><li>Email template</li></ul></div>
+    <div class="card"><div class="label">Repository</div><p style="margin:0 0 10px;color:var(--muted)">Source notes, flow explanation and README.</p><a href="https://github.com/mnkiswan/kickoff-booking-reminder">github.com/mnkiswan/kickoff-booking-reminder</a></div>
+  </div>
+</section>
+
+<footer><span>Kickoff Booking Reminder &middot; Zoho Flow case study</span><a href="https://mnkiswan.github.io/zoho-flow-portfolio/">&larr; All workflows</a></footer>
+
+</main>
+</body>
+</html>
